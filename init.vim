@@ -1,34 +1,32 @@
-"Dein Scripts-----------------------------
 if &compatible
   set nocompatible               " Be iMproved
 endif
-
+call plug#begin('~/.config/nvim/plugged')
+let g:python3_host_prog = '/usr/bin/python3'
+let g:python_host_prog = '/usr/bin/python'
+let g:ycm_python_binary_path = 'python3'
 " Required:
-set runtimepath+=/home/r00t/.cache/dein/repos/github.com/Shougo/dein.vim
-
 " Required:
-call dein#begin('/home/r00t/.cache/dein')
 
 " Let dein manage dein
 " Required:
-call dein#add('/home/r00t/.cache/dein/repos/github.com/Shougo/dein.vim')
+" Add or remove your plugins here like thiapt install mono-complete golang nodejs default-jdk npms:
+Plug 'scrooloose/nerdtree'
+Plug 'tmsvg/pear-tree'
+Plug 'ryanoasis/vim-devicons'
+Plug 'neomake/neomake', { 'for': ['rust'] }
+Plug 'arcticicestudio/nord-vim'
+Plug 'rust-lang/rust.vim'
+Plug 'ycm-core/YouCompleteMe'
 
-" Add or remove your plugins here like this:
-call dein#add('scrooloose/nerdtree')
-call dein#add('tmsvg/pear-tree')
-call dein#add('ryanoasis/vim-devicons')
 
 " Required:
-call dein#end()
-
+call plug#end()
 " Required:
 filetype plugin indent on
 syntax enable
 
 " If you want to install not installed plugins on startup.
-if dein#check_install()
-  call dein#install()
-endif
 
 "End dein Scripts-------------------------
 
@@ -65,3 +63,19 @@ endif
  set mouse=a
  set title
  set background=dark
+ colorscheme nord
+
+ " Neomake
+" Gross hack to stop Neomake running when exitting because it creates a zombie cargo check process
+" which holds the lock and never exits. But then, if you only have QuitPre, closing one pane will
+" disable neomake, so BufEnter reenables when you enter another buffer.
+let s:quitting = 0
+au QuitPre *.rs let s:quitting = 1
+au BufEnter *.rs let s:quitting = 0
+au BufWritePost *.rs if ! s:quitting | Neomake | else | echom "Neomake disabled"| endif
+au QuitPre *.ts let s:quitting = 1
+au BufEnter *.ts let s:quitting = 0
+au BufWritePost *.ts if ! s:quitting | Neomake | else | echom "Neomake disabled"| endif
+let g:neomake_warning_sign = {'text': '?'}
+
+"
