@@ -78,4 +78,7 @@ au BufEnter *.ts let s:quitting = 0
 au BufWritePost *.ts if ! s:quitting | Neomake | else | echom "Neomake disabled"| endif
 let g:neomake_warning_sign = {'text': '?'}
 
-"
+"Vimwiki stuff
+let g:vimwiki_list = [{'path': '~/vimwiki/',
+                      \ 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_global_ext = 0
