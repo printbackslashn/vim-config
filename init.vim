@@ -18,7 +18,7 @@ Plug 'neomake/neomake', { 'for': ['rust'] }
 Plug 'arcticicestudio/nord-vim'
 Plug 'rust-lang/rust.vim'
 Plug 'ycm-core/YouCompleteMe'
-
+Plug 'vimwiki/vimwiki'
 
 " Required:
 call plug#end()
