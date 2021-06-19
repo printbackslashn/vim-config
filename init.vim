@@ -64,6 +64,12 @@ syntax enable
  set title
  set background=dark
  colorscheme nord
+if exists('+termguicolors')
+  let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+endif
+"^^^True colors
 
  " Neomake
 " Gross hack to stop Neomake running when exitting because it creates a zombie cargo check process
@@ -80,5 +86,6 @@ let g:neomake_warning_sign = {'text': '?'}
 
 "Vimwiki stuff
 let g:vimwiki_list = [{'path': '~/vimwiki/',
-                      \ 'syntax': 'markdown', 'ext': '.md'}]
+                      \ 'syntax': 'markdown', 'ext': '.md',
+                      \ 'custom_wiki2html': '/usr/bin/wiki2html.sh'}]
 let g:vimwiki_global_ext = 0
