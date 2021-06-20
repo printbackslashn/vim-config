@@ -47,7 +47,7 @@ syntax enable
  set display+=lastline
  set encoding=utf-8
  set linebreak
- set scrolloff=4
+ set scrolloff=6
  set sidescrolloff=5
  syntax enable
  
