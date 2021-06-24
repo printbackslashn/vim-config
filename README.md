@@ -1,6 +1,3 @@
-# vim-config
-## Mark Wilkinson
+# ARCHIVED
 
-
-Now on nixos so will change things, maybe
-NVM still using my init.vim because no clue how to use nix configs to manage neovim
+I have now switched to using home-manager on nix for vim, if your looking for my vim config look at my dotfiles.
