@@ -1,14 +1,8 @@
 if &compatible
   set nocompatible               " Be iMproved
 endif
-call plug#begin('~/.config/nvim/plugged')
-let g:python3_host_prog = '/usr/bin/python3'
-let g:python_host_prog = '/usr/bin/python'
-let g:ycm_python_binary_path = 'python3'
 " Required:
-" Required:
-
-" Let dein manage dein
+call plug#begin()
 " Required:
 " Add or remove your plugins here like thiapt install mono-complete golang nodejs default-jdk npms:
 Plug 'scrooloose/nerdtree'
@@ -17,7 +11,6 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'neomake/neomake', { 'for': ['rust'] }
 Plug 'arcticicestudio/nord-vim'
 Plug 'rust-lang/rust.vim'
-Plug 'ycm-core/YouCompleteMe'
 Plug 'vimwiki/vimwiki'
 
 " Required:
